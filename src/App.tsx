@@ -1,25 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {questions} from './data/data';
+import {QuestionInterface} from "./type/type";
+import {Question} from "./components/Question/Question";
 
 function App() {
+  const [quesetions, setQuestions] = useState<QuestionInterface[]>(questions);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <main>
+     <div className="container">
+       <h3>quesetions and answers about login</h3>
+         <section className="info">
+             {
+                 quesetions.map((question) => <Question key={question.id} question={question}/>)
+             }
+         </section>
+     </div>
+   </main>
   );
 }
 
